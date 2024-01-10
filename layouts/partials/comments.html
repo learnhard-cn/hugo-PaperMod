@@ -1,3 +1,13 @@
 {{- /* Comments area start */ -}}
+
+{{- if (eq (.Param "services.giscus.enable") true) }}
+{{ partial "giscus.html" . }}
+{{- end }}
+
+{{- if (eq (.Param "services.disqus.enable") true) }}
+{{ partial "disqus.html" . }}
+{{- end }}
+
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 {{- /* Comments area end */ -}}
+
