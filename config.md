@@ -26,3 +26,19 @@ services:
     theme: "perferred_color_scheme"
     loading: "lazy"
 ```
+
+## 高亮色彩方案修改
+
+使用hugo生成高亮色彩方案CSS配置:
+```bash
+
+# 保存至 ./themes/PaperMod/assets/css/includes/chroma-styles.css 文件中
+
+hugo gen chromastyles --style=nord > ./themes/PaperMod/assets/css/includes/chroma-styles.css
+
+```
+
+> 可以选择哪些色彩方案？ 访问这里[查看方案效果](https://xyproto.github.io/splash/docs/)
+
+
+## 支持数学函数
