@@ -1,0 +1,16 @@
+<!-- handle keyboard shortcut -->
+<script>
+    // Function to handle keyboard shortcut
+    function handleShortcut(event) {
+        // Check if the pressed keys are Alt + G
+        if (event.altKey && event.key === "g") {
+            scrollToTop();
+        }else if (event.altKey && event.key === "c") {
+            toggleToc();
+        }
+    }
+
+    // Add event listener to the document for keydown events
+    document.addEventListener("keydown", handleShortcut);
+
+</script>

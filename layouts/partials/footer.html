@@ -14,11 +14,18 @@
 {{- end }}
 
 {{- if (not site.Params.disableScrollToTop) }}
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+<a href="#top" aria-label="go to top" title="{{- i18n "go_to_top" | default "Go to Top (Alt + G)" }}" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
+<button id="top-button" type="button" class="top-link" tabindex="-1">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path>
+    </svg>
+    {{- i18n "go_to_top" | default "Go to Top (Alt + G)" }}
+</button>
+
 {{- end }}
 
 {{- partial "extend_footer.html" . }}
@@ -54,19 +61,7 @@
 </script>
 
 {{- if (not site.Params.disableScrollToTop) }}
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
+    {{- partial "top_button.html" . }}
 {{- end }}
 
 {{- if (not site.Params.disableThemeToggle) }}
@@ -133,3 +128,5 @@
     });
 </script>
 {{- end }}
+
+{{- partial "shortcuts.html" . }}

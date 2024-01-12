@@ -1,0 +1,17 @@
+{{/* 代码演示 Shortcode.
+    Online Compiler, Visual Debugger, and AI Tutor for Python, Java, C, C++, and JavaScript
+    Python Tutor 可帮助您使用 Python、Java、C、C++ 和 JavaScript 完成编程作业。
+    它包含独特的分步可视化调试器和 AI 导师，可帮助您理解和调试代码。
+*/}}
+
+{{/* Parameters : */}}
+{{/* - src (#0) : src url */}}
+{{- $src := "" }}
+{{- if .IsNamedParams }}
+{{- $src = .Get "src" }}
+{{- else }}
+    {{- $src = .Get 0 }}
+{{- end }}
+
+<iframe id="short_pythontutor" width="100%" height="500" frameborder="0" src="{{ $src }}">
+</iframe>

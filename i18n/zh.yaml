@@ -6,16 +6,16 @@
 
 - id: read_time
   translation:
-    one : "1 分钟"
-    other: "{{ .Count }} 分钟"
+    one : " 阅读 1 分钟"
+    other: " 阅读 {{ .Count }} 分钟"
 
 - id: words
   translation: 
-    one: "字"
-    other: "{{ .Count }} 字"
+    one: " 字"
+    other: " 共 {{ .Count }} 字"
 
 - id: toc
-  translation: "目录"
+  translation: "目录(Alt + C)"
 
 - id: translations
   translation: "语言"
@@ -31,3 +31,6 @@
 
 - id: code_copied
   translation: "已复制！"
+
+- id: go_to_top
+  translation: "回到顶部(Alt + G)"

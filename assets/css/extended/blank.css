@@ -3,3 +3,178 @@ This is just a placeholder blank stylesheet so as to support adding custom style
 
 Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-css-with-themes-assets for more info
 */
+
+.tip {
+    background-color: var(--secondary);
+    color: var(--theme);
+    padding: 0px;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    bottom: 64px !important;
+}
+
+.tip-title {
+    background-color: #A3BE8C;
+    color: var(--theme) !important;
+    ;
+}
+
+/* Style for the button */
+#top-button svg {
+    display: inline-block;
+    vertical-align: -0.5em;
+    fill: currentcolor;
+    height: 1.2rem !important;
+    width: 1.2rem !important;
+}
+
+#top-button {
+    display: flex;
+    justify-content: center;
+    right: 50%;
+    width: auto;
+    height: 42px;
+    animation: pulse infinite alternate 0.9s;
+    color: var(--content);
+}
+
+
+/** Sidebar styles */
+/* top level styles */
+.sidebar-toc {
+    border-radius: 1.6rem;
+    display: inline-block;
+    font-size: .9rem;
+    font-family: var(--article-font-family);
+    position: -webkit-sticky;
+    position: sticky;
+    position: fixed;
+    z-index: 3;
+    border: 0px !important;
+    padding: 0px !important;
+}
+
+/*  toogle sidebar element styles */
+#toc-toggle {
+    background-color: var(--theme) 0.1;
+    color: var(--content);
+    position: -webkit-sticky;
+    position: sticky;
+    position:fixed;
+    top: 50%;
+    right: 5px;
+    border: none;
+    border-radius: 5px;
+    padding-top: 14px;
+    padding-left: 10px;
+    cursor: pointer;
+    height: 48px;
+    width: 24px;
+    transition: background-color 0.3s ease, color 0.5s ease;
+}
+
+
+#toc-toggle svg {
+    display: inline-block;
+    fill: currentcolor;
+    padding-right: 1px !important;
+    height: 1.2rem !important;
+    width: 1.2rem !important;
+    animation: pulse infinite alternate 0.9s;
+}
+
+#toc-toggle:hover {
+    background-color: var(--theme);
+    color: var(--content)
+}
+
+#toc-toggle.show {
+    z-index: 2;
+    background-color: var(--code-block-bg);
+    right: 220px;
+}
+
+
+/* toc content bar */
+.toc-sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    position: fixed;
+    top: 0;
+    right: 0px;
+    width: 25px;
+    height: 100%;
+    background-color: var(--code-block-bg);
+    /* nord sidebar color */
+    border-left: 1px solid var(--code-block-bg);
+    /* nord border color */
+    overflow: hidden;
+    white-space: nowrap;
+    display: none;
+}
+
+.toc-sidebar.show {
+    width: 240px;
+    display: block;
+}
+
+.toc-header {
+    background-color: var(--code-block-bg);
+    color: var(--content);
+    padding: 0px;
+    font-weight: bold;
+    height: 28px;
+    text-align: right;
+}
+
+.toc-content {
+    color: var(--content);
+    padding-left: 24px;
+    width: 200px;
+    height: auto;
+}
+
+
+/** TOC Items ********************************/
+
+.toc ul {
+    list-style: none;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.toc ul>li {
+    &::before {
+        content: "🌑";
+        transform: scale(0.2);
+        display: inline-block;
+        animation: pulse infinite alternate 0.9s;
+    }
+}
+
+@keyframes pulse {
+    to {
+        transform: scale(0.9);
+    }
+}
+
+.license-wrapper {
+    background-color: var(--border);
+    padding: 15px;
+    border-radius: var(--radius);
+}
+
+.license-wrapper p {
+    padding: 0;
+    height: 32px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.dotted-line {
+    border-bottom: 5px dotted var(--content);
+    margin: 5px;
+}

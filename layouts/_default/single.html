@@ -30,16 +30,25 @@
   </header>
   {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
-  {{- if (.Param "ShowToc") }}
-  {{- partial "toc.html" . }}
-  {{- end }}
 
   {{- if .Content }}
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }}
     {{- partial "anchored_headings.html" .Content -}}
     {{- else }}{{ .Content }}{{ end }}
+    <div class="dotted-line"></div>
+    <div class="license-wrapper">
+      <p>原文作者: <a href="{{ .Site.BaseURL }}">{{ .Site.Param "author" }}</a> </p>
+      <p>原始链接: <a href="{{ .Permalink }}">{{ .Permalink }}</a> </p>
+      <p>发表时间: {{ .PublishDate }} </p>
+      <p>修改时间: {{ .Lastmod }} </p>
+      <p>版权声明：本文采用<a href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+    </div>
+    <div class="dotted-line"></div>
   </div>
+  {{- if (.Param "ShowToc") }}
+  {{- partial "sidebar_toc.html" . }}
+  {{- end }}
 
   {{ if .Page.Store.Get "hasMermaid" }}
     <script type="module">

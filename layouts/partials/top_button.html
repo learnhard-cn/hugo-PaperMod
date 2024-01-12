@@ -1,0 +1,35 @@
+<script>
+    function scrollToTop() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    }
+    var goToTopLink = document.getElementById("top-link");
+    var topButtons = document.getElementsByClassName("top-link");
+    for (var i = 0; i < topButtons.length; i++) {
+        topButtons[i].addEventListener("click", scrollToTop);
+    }
+    window.onscroll = function () {
+        toggleScrollTopButton();
+    };
+    var lastScrollTop = 0; // 用于存储上一次滚动位置
+    var goToTopBtn = document.getElementById('top-button');
+    function toggleScrollTopButton() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+         // 判断滚动方向
+        if (scrollTop > lastScrollTop || scrollTop == 0) {
+            // 向下滚动，隐藏按钮
+            goToTopBtn.style.opacity = '0';
+            goToTopBtn.style.visibility = "hidden";
+            goToTopLink.style.visibility = "hidden";
+            goToTopLink.style.opacity = "0";
+        } else {
+            // 向上滚动，显示按钮
+            goToTopBtn.style.opacity = '1';
+            goToTopBtn.style.visibility = "visible";
+            goToTopLink.style.opacity = "1";
+            goToTopLink.style.visibility = "visible";
+        }
+
+        lastScrollTop = scrollTop;
+    };
+</script>
