@@ -154,8 +154,13 @@
             {{- $page_url:= $currentPage.Permalink | absLangURL }}
             {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
             <li>
-                <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
-                {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
+                {{ if .Children }}
+                <div class="dropdown-menu">
+                    
+                {{ end }}
+                <a {{ if .Children }} class="dropdown-btn"  {{ else }} href="{{ .URL | absLangURL }}" {{end}}
+                title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
+                {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }} >
                     <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
                         {{- .Pre }}
                         {{- .Name -}}
@@ -168,8 +173,31 @@
                         <path d="M15 3h6v6"></path>
                         <path d="M10 14L21 3"></path>
                     </svg>
+                    {{ else if .Children }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M8 9l4 -4l4 4" />
+                        <path d="M16 15l-4 4l-4 -4" />
+                    </svg>
                     {{- end }}
                 </a>
+                <!-- 支持二级悬浮菜单列表 -->
+                {{ with .Children }}
+                <div class="dropdown-content">
+                    {{ range . }}
+                        <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}">
+                            <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
+                                {{- .Pre }} {{- .Name -}} {{ .Post -}}
+                            </span>
+                        </a>
+                    {{ end }} {{/*End of range .*/}}
+                </div>
+                {{ end }} {{/*End of with*/}}
+                
+                {{ if .Children }}
+                </div>  <!-- end of dropdown-menu -->
+                {{ end }}
             </li>
             {{- end }}
         </ul>

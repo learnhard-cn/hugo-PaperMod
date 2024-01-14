@@ -78,6 +78,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 .sidebar-toc {
     top: 30% !important;
 }
+
 .sidebar.show,
 .sidebar:hover {
     top: 0% !important;
@@ -113,6 +114,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     width: auto !important;
     animation: pulse infinite alternate 0.9s;
 }
+
 .pages-section {
     color: var(--content);
     font-weight: bold;
@@ -282,16 +284,54 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 
 /******* 代码高亮 code highlight *******/
 
-.code-wrapper{
+.code-wrapper {
     display: block;
     width: 100%;
 }
 
 .code-wrapper .code-lang {
-    position:relative;
+    position: relative;
     float: left;
     z-index: 2;
     padding: 1px 5px;
     background-color: var(--entry);
     opacity: 0.5;
+}
+
+/******* 悬浮下拉菜单 *******/
+
+/* 容器 <div> - 需要定位下拉内容 */
+.dropdown-menu {
+    position: relative;
+    display: inline-block;
+}
+
+/* 下拉内容（默认隐藏）*/
+.dropdown-content {
+    display: none;
+    position: fixed;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+/* 下拉列表中的链接 */
+.dropdown-content a {
+    display: block;
+    padding: .1rem .5rem;
+}
+
+/* 更改悬停时下拉链接的颜色 */
+.dropdown-content a:hover {
+    background-color: var(--entry);
+}
+
+/* 悬停时显示下拉菜单 */
+.dropdown-menu:hover .dropdown-content {
+    display: block;
+}
+
+/* 显示下拉内容时更改下拉按钮的背景颜色 */
+.dropdown-menu:hover .dropdown-btn {
+    background-color: var(--entry);
 }
