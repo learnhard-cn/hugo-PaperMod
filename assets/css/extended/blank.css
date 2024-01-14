@@ -291,7 +291,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     position:relative;
     float: left;
     z-index: 2;
-    padding: .2rem;
+    padding: 1px 5px;
     background-color: var(--entry);
     opacity: 0.5;
 }
