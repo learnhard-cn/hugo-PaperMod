@@ -20,7 +20,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--primary);
+    color: var(--primary) !important;
 }
 
 body {
@@ -28,7 +28,7 @@ body {
     font-size: 18px;
     line-height: 1.6;
     word-break: break-word;
-    background: var(--theme);
+    background: var(--theme) !important;
 }
 
 article,

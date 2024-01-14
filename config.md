@@ -3,18 +3,12 @@
 
 ## 功能支持
 
-- [] 浮动的目录样式,(sidebar-right失去焦点后自动关闭)
-- [x] 添加top按钮以及快捷键 `Alt` + `g` 支持.
+- [x] 浮动的目录样式sidebar
+- [x] 浮动的文章列表sidebar
+- [x] 添加top按钮以及快捷键 `g` 支持.
 - [x] 代码渲染自定义(`render_codebock.html`)
 - [x] 支持 pythontutor 代码可视化调试 shortcode
 - [x] 支持显示`Tip`提示框 shortcode 
-
-
-## 问题解决
-
-1. sidebar-right失去焦点后自动关闭
-3. 移动端滑动显示目录TOC
-2. go to top 居中对齐问题
 
 
 ## Comment配置支持

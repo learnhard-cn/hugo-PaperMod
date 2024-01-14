@@ -47,6 +47,7 @@
     <div class="dotted-line"></div>
   </div>
   {{- if (.Param "ShowToc") }}
+  {{- partial "sidebar_articles.html" . }}
   {{- partial "sidebar_toc.html" . }}
   {{- end }}
 

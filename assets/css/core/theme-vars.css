@@ -6,26 +6,26 @@
     --header-height: 60px;
     --footer-height: 60px;
     --radius: 8px;
-    --theme: #f8f9fa;
-    --entry: #fdfffc;
-    --primary: #343a40;
-    --secondary: #6c757d;
-    --tertiary: #adb5bd;
-    --content: #212529;
-    --code-block-bg: #eee4e1;
-    --code-bg: #dee2e6;
-    --border: #d9d9d9;
+    --theme: #ffffff;
+    --entry: #ebfde8de;
+    --primary: #313131;
+    --secondary: #6f6f6f;
+    --tertiary: #a0a0a0;
+    --content: #0f0f0f;
+    --code-block-bg: #473e3e;
+    --code-bg: #9398aa;
+    --border: #424242;
 }
 
 .dark {
-    --theme: #2E3440;
-    --entry: #4C566A;
-    --primary: #e5e9f0;
-    --secondary: #d8dee9;
-    --tertiary: #5e81ac;
-    --content: #eceff4;
-    --code-block-bg: #2b2e34;
-    --code-bg: #2e323a;
+    --theme: #1f1f1f;
+    --entry: #262121;
+    --primary: #978989;
+    --secondary: #807777;
+    --tertiary: #536b88;
+    --content: #b4b4b4;
+    --code-block-bg: #2f2f2f;
+    --code-bg: #373535;
     --border: #323335;
 }
 

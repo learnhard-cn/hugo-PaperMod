@@ -1,56 +1,17 @@
-<div id="sidebar-toc" class="sidebar-toc toc" tabindex="1">
-    <div id="toc-toggle" class="{{if (.Param " TocOpen" ) }} show{{end}}" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-            viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-            <path
-                d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z" />
-        </svg>
-    </div>
-    <div class="toc-sidebar {{if (.Param " TocOpen" ) }}show{{end}}" tabindex="2">
-        <div class="toc-header">{{- i18n "toc" | default "Table of Contents" }}</div>
-        <div class="toc-content" tabindex="3">
+<div id="sidebar-toc" class="sidebar sidebar-toc toc {{if (.Param " TocOpen") }}show{{end}}" tabindex="1">
+    <div class="toc-sidebar">
+        <div class="sidebar-menu-wrapper">
+            <div class="sidebar-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z" />
+                </svg>
+            </div>
+            <div class="toc-header">{{- i18n "toc" | default "Table of Contents" }} </div>
+        </div>
+        <div class="toc-content">
             {{- .TableOfContents -}}
         </div>
     </div>
 </div>
-
-<script>
-
-    function toggleToc() {
-        var tocSidebar = document.querySelector('.toc-sidebar');
-        var tocToggle = document.getElementById('toc-toggle');
-
-        tocToggle.classList.toggle('show');
-        tocSidebar.classList.toggle('show');
-        if (document.activeElement != tocSidebar) {
-            tocToggle.focus();
-        }
-        console.log(document.activeElement, tocSidebar)
-    }
-    function openToc() {
-        var tocSidebar = document.querySelector('.toc-sidebar');
-        var tocToggle = document.getElementById('toc-toggle');
-        var siderbar = document.getElementById('sidebar-toc');
-
-        tocToggle.classList.add('show');
-        tocSidebar.classList.add('show');
-        siderbar.focus();
-    }
-    function closeToc() {
-        var tocSidebar = document.querySelector('.toc-sidebar');
-        var tocToggle = document.getElementById('toc-toggle');
-
-        tocToggle.classList.remove('show');
-        tocSidebar.classList.remove('show');
-    }
-    // 获取TOC元素
-    tocToggle = document.getElementById('toc-toggle')
-    tocToggle.onclick = function () {
-        toggleToc();
-
-    };
-    tocToggle.onmouseover = function () {
-        openToc();
-    };
-
-</script>

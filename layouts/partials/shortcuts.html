@@ -1,12 +1,70 @@
 <!-- handle keyboard shortcut -->
 <script>
-    // Function to handle keyboard shortcut
+    function toggleFullscreen() {
+        const elem = document.documentElement;
+
+        if (!document.fullscreenElement) {
+            // If the document is not currently in fullscreen, request fullscreen
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+        } else {
+            // If the document is currently in fullscreen, exit fullscreen
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+            }
+        }
+    }
     function handleShortcut(event) {
-        // Check if the pressed keys are Alt + G
-        if (event.altKey && event.key === "g") {
-            scrollToTop();
-        }else if (event.altKey && event.key === "c") {
-            toggleToc();
+        var scroll_step = 10;
+        switch (event.key) {
+            case 's':
+                scrollDirection = -1; // scroll up
+                window.scrollBy(0, scrollDirection * scroll_step * scroll_step);
+                break;
+            case 'd':
+                scrollDirection = 1; // Scroll down
+                window.scrollBy(0, scrollDirection * scroll_step * scroll_step);
+                break;
+            /* 功能按钮 */
+            case 'c':
+                var sidebar_toc = document.getElementById("sidebar-toc");
+                sidebar_toc.classList.toggle('show');
+                break;
+            case 'f':
+                toggleFullscreen();
+                break;
+            case 'g':
+                scrollToTop();
+                break;
+            case 'h':
+                location.href = "/";
+                break;
+            case 'r':
+                location.reload();
+                break;
+            case 't':
+                toggleTheme();
+                break;
+            case 'x':
+                var sidebar_pages = document.getElementById("sidebar-pages");
+                sidebar_pages.classList.toggle('show');
+                break;
+            default:
+                // Handle other keys if needed
+                break;
         }
     }
 

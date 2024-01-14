@@ -3,10 +3,16 @@ This is just a placeholder blank stylesheet so as to support adding custom style
 
 Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-css-with-themes-assets for more info
 */
+:root {
+    --sidebar-width: 16rem;
+    --sidebar-dwidth: -14rem;
+    --toc-width: 12.5rem;
+    --toc-height: 100% !important;
+}
 
 .tip {
-    background-color: var(--secondary);
-    color: var(--theme);
+    background-color: var(--entry);
+    color: var(--content);
     padding: 0px;
     border: 2px solid var(--border);
     border-radius: 5px;
@@ -30,109 +36,109 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 }
 
 #top-button {
-    display: flex;
-    justify-content: center;
-    right: 50%;
+    display: fixed;
+    left: 50%;
+    bottom: 5%;
     width: auto;
-    height: 42px;
-    animation: pulse infinite alternate 0.9s;
-    color: var(--content);
+    height: 3.0rem;
+    transform: translate(-50%, -50%);
+    color: var(--content) !important;
+}
+
+.top-link {
+    background-color: var(--entry) !important;
+    opacity: 0.9 !important;
 }
 
 
 /** Sidebar styles */
-/* top level styles */
-.sidebar-toc {
-    border-radius: 1.6rem;
-    display: inline-block;
+.sidebar {
+    display: block;
     font-size: .9rem;
     font-family: var(--article-font-family);
     position: -webkit-sticky;
     position: sticky;
+    height: 2.5rem;
+    width: var(--sidebar-width);
     position: fixed;
-    z-index: 3;
+    z-index: 1;
+    left: var(--sidebar-dwidth);
+    overflow: hidden;
     border: 0px !important;
     padding: 0px !important;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    opacity: 0.8;
 }
 
-/*  toogle sidebar element styles */
-#toc-toggle {
-    background-color: var(--theme) 0.1;
-    color: var(--content);
-    position: -webkit-sticky;
-    position: sticky;
-    position:fixed;
-    top: 50%;
-    right: 5px;
-    border: none;
-    border-radius: 5px;
-    padding-top: 14px;
-    padding-left: 10px;
+.sidebar-pages {
+    top: 50% !important;
+}
+
+.sidebar-toc {
+    top: 30% !important;
+}
+.sidebar.show,
+.sidebar:hover {
+    top: 0% !important;
+    left: 0%;
+    height: var(--toc-height);
     cursor: pointer;
-    height: 48px;
-    width: 24px;
-    transition: background-color 0.3s ease, color 0.5s ease;
+    opacity: 0.9;
+    z-index: 3;
 }
-
-
-#toc-toggle svg {
-    display: inline-block;
-    fill: currentcolor;
-    padding-right: 1px !important;
-    height: 1.2rem !important;
-    width: 1.2rem !important;
-    animation: pulse infinite alternate 0.9s;
-}
-
-#toc-toggle:hover {
-    background-color: var(--theme);
-    color: var(--content)
-}
-
-#toc-toggle.show {
-    z-index: 2;
-    background-color: var(--code-block-bg);
-    right: 220px;
-}
-
 
 /* toc content bar */
+.pages-sidebar,
 .toc-sidebar {
-    position: -webkit-sticky;
-    position: sticky;
-    position: fixed;
-    top: 0;
-    right: 0px;
-    width: 25px;
-    height: 100%;
-    background-color: var(--code-block-bg);
-    /* nord sidebar color */
-    border-left: 1px solid var(--code-block-bg);
-    /* nord border color */
+    border-left: 0px solid var(--code-block-bg);
     overflow: hidden;
     white-space: nowrap;
-    display: none;
 }
 
-.toc-sidebar.show {
-    width: 240px;
-    display: block;
-}
-
-.toc-header {
-    background-color: var(--code-block-bg);
+.sidebar-menu {
     color: var(--content);
     padding: 0px;
     font-weight: bold;
     height: 28px;
     text-align: right;
+    float: right;
 }
 
-.toc-content {
+.sidebar-menu svg,
+.sidebar-menu img {
+    padding: 0;
+    fill: currentcolor;
+    height: 32px !important;
+    width: auto !important;
+    animation: pulse infinite alternate 0.9s;
+}
+.pages-section {
     color: var(--content);
-    padding-left: 24px;
-    width: 200px;
-    height: auto;
+    font-weight: bold;
+    height: 28px;
+    padding-top: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+.toc-header {
+    color: var(--content);
+    font-weight: bold;
+    height: 28px;
+    text-align: left;
+    float: left;
+}
+
+.pages-titles,
+.toc-content {
+    position: fixed !important;
+    color: var(--content);
+    padding-top: 30px;
+    padding-left: 0px;
+    width: var(--toc-width);
+    height: var(--toc-height);
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 
@@ -142,15 +148,22 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     list-style: none;
     overflow: hidden;
     white-space: nowrap;
+    padding-left: 0.9rem;
 }
 
 .toc ul>li {
     &::before {
-        content: "🌑";
-        transform: scale(0.2);
+        content: " • ";
+        transform: scale(1.0);
         display: inline-block;
-        animation: pulse infinite alternate 0.9s;
+        /* animation: pulse infinite alternate 0.9s; */
     }
+}
+
+.toc a:hover {
+    background: #f75357 !important;
+    color: snow !important;
+    border-radius: 0.2rem;
 }
 
 @keyframes pulse {
@@ -160,7 +173,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 }
 
 .license-wrapper {
-    background-color: var(--border);
+    background-color: var(--entry);
     padding: 15px;
     border-radius: var(--radius);
 }
@@ -177,4 +190,108 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 .dotted-line {
     border-bottom: 5px dotted var(--content);
     margin: 5px;
+}
+
+/*********** inTextImg shortcode Styles *********/
+
+/* 包含图像和文本的容器 */
+.img-text-container {
+    position: relative;
+    text-align: center;
+    color: var(--content);
+}
+
+.img-text-container>div {
+    background-color: rgba(2, 2, 2, 0.5);
+    padding: 1rem;
+    border-radius: var(--radius);
+}
+
+/* 左下角文字 */
+.img-text-container .bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
+/* 左上角文字 */
+.img-text-container .top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+/* 右上角文字 */
+.img-text-container .top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+/* 右下角文字 */
+.img-text-container .bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+/* 居中文本 */
+.img-text-container .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.img-text-container .top {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.img-text-container .bottom {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    width: 100% !important;
+    transform: translate(-50%, -50%);
+}
+
+.img-text-container .left {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+}
+
+.img-text-container .right {
+    position: absolute;
+    top: 50%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+}
+
+.img-text-container .img-text {
+    width: 100%;
+}
+
+#menu svg {
+    display: inline;
+}
+
+/******* 代码高亮 code highlight *******/
+
+.code-wrapper{
+    display: block;
+    width: 100%;
+}
+
+.code-wrapper .code-lang {
+    position:relative;
+    float: left;
+    z-index: 2;
+    padding: .2rem;
+    background-color: var(--entry);
+    opacity: 0.5;
 }

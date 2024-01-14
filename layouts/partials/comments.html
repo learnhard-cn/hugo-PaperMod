@@ -1,4 +1,5 @@
 {{- /* Comments area start */ -}}
+<div id="comments">
 
 {{- if (eq (.Param "services.giscus.enable") true) }}
 {{ partial "giscus.html" . }}
@@ -11,3 +12,4 @@
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 {{- /* Comments area end */ -}}
 
+</div>
