@@ -69,6 +69,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     border-radius: 0.5rem;
     padding: 0.5rem;
     opacity: 0.8;
+    background-color: var(--entry);
 }
 
 .sidebar-pages {
@@ -92,7 +93,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 /* toc content bar */
 .pages-sidebar,
 .toc-sidebar {
-    border-left: 0px solid var(--code-block-bg);
+    border-left: 0px solid var(--border);
     overflow: hidden;
     white-space: nowrap;
 }
@@ -109,7 +110,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 .sidebar-menu svg,
 .sidebar-menu img {
     padding: 0;
-    fill: currentcolor;
+    fill: currentcolor !important;
     height: 32px !important;
     width: auto !important;
     animation: pulse infinite alternate 0.9s;
@@ -188,7 +189,11 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     overflow: hidden;
 }
 
-
+.post-footer,
+.paginav,
+.share-buttons {
+    background-color: var(--entry) !important;
+}
 .dotted-line {
     border-bottom: 5px dotted var(--tertiary);
     margin: 5px;

@@ -7,18 +7,18 @@
     --footer-height: 60px;
     --radius: 8px;
     --theme: #ffffff;
-    --entry: #ebfde8de;
+    --entry: #ffebf6de;
     --primary: #313131;
-    --secondary: #6f6f6f;
-    --tertiary: #a0a0a0;
-    --content: #0f0f0f;
-    --code-block-bg: #473e3e;
-    --code-bg: #9398aa;
-    --border: #424242;
+    --secondary: #4c4c4c;
+    --tertiary: #96535e;
+    --content: #282828;
+    --code-block-bg: #4d4d4d;
+    --code-bg: #ffafaf;
+    --border: #e4bcbe;
 }
 
 .dark {
-    --theme: #252525;          /* 主题整体背景色 */
+    --theme: #201c1c;          /* 主题整体背景色 */
     --entry: #251d1d;          /* 条目（如文章标题等）的背景色 */
     --primary: #e0bbbb;        /* 主要文本颜色 */
     --secondary: #cda3a3;      /* 次要文本颜色 */
@@ -26,7 +26,7 @@
     --content: #feeeee;        /* 内容块（如文章内容等）的文本颜色 */
     --code-block-bg: #2c1e23;  /* 代码块背景色 */
     --code-bg: #4c4242;        /* 代码背景色 */
-    --border: #603838;         /* 边框颜色 */
+    --border: #4e2f39;         /* 边框颜色 */
 }
 
 .cloud {
