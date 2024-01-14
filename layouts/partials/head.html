@@ -120,7 +120,7 @@
         }
 
     </style>
-    {{- if (and (ne site.Params.defaultTheme "light") (ne site.Params.defaultTheme "dark")) }}
+    {{- if (and (ne site.Params.defaultTheme "light") (ne site.Params.defaultTheme "dark") (ne site.Params.defaultTheme "cloud")) }}
     <style>
         @media (prefers-color-scheme: dark) {
             :root {

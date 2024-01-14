@@ -18,15 +18,27 @@
 }
 
 .dark {
-    --theme: #1f1f1f;
-    --entry: #262121;
-    --primary: #978989;
-    --secondary: #807777;
-    --tertiary: #536b88;
-    --content: #b4b4b4;
-    --code-block-bg: #2f2f2f;
-    --code-bg: #373535;
-    --border: #323335;
+    --theme: #252525;          /* 主题整体背景色 */
+    --entry: #251d1d;          /* 条目（如文章标题等）的背景色 */
+    --primary: #e0bbbb;        /* 主要文本颜色 */
+    --secondary: #cda3a3;      /* 次要文本颜色 */
+    --tertiary: #834444;       /* 第三级文本颜色 ，用于鲜明颜色对比*/
+    --content: #feeeee;        /* 内容块（如文章内容等）的文本颜色 */
+    --code-block-bg: #2c1e23;  /* 代码块背景色 */
+    --code-bg: #4c4242;        /* 代码背景色 */
+    --border: #603838;         /* 边框颜色 */
+}
+
+.cloud {
+    --theme: #073b4c;          /* 主题整体背景色 */
+    --entry: #005e67;          /* 条目（如文章标题等）的背景色 */
+    --primary: #ffe1e1;        /* 主要文本颜色 */
+    --secondary: #c7c7c7;      /* 次要文本颜色 */
+    --tertiary: #e31f1f;       /* 第三级文本颜色 */
+    --content: #e0e0e0;        /* 内容块（如文章内容等）的文本颜色 */
+    --code-block-bg: #002734;  /* 代码块背景色 */
+    --code-bg: #06303d;        /* 代码背景色 */
+    --border: #293e69;         /* 边框颜色 */
 }
 
 .list {
@@ -35,4 +47,8 @@
 
 .dark.list {
     background: var(--theme);
+}
+
+.body {
+    transition: background-color 0.5s ease;
 }

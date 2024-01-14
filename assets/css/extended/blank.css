@@ -188,7 +188,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 
 
 .dotted-line {
-    border-bottom: 5px dotted var(--content);
+    border-bottom: 5px dotted var(--tertiary);
     margin: 5px;
 }
 

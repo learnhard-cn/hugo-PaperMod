@@ -7,23 +7,4 @@
         data-theme="{{ site.Params.Services.Giscus.Theme }}" data-lang="zh-CN"
         data-loading="{{ site.Params.Services.Giscus.Loading }}" crossorigin="anonymous" async>
 
-        </script>
-
-
-<script>
-
-        function changeGiscusTheme() {
-                const theme = document.body.classList.contains('dark') ? 'light_high_contrast' : 'dark_dimmed';
-                function sendMessage(message) {
-                        const iframe = document.querySelector('iframe.giscus-frame');
-                        if (!iframe) return;
-                        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-                }
-                sendMessage({
-                        setConfig: {
-                                theme: theme,
-                        },
-                });
-        }
-
 </script>
