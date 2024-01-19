@@ -74,7 +74,6 @@
 {{- else }}
 <link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
 {{- end }}
-
 {{- /* Search */}}
 {{- if (eq .Layout `search`) -}}
 <link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
@@ -85,7 +84,7 @@
 {{- $search := (slice $fusejs $license_js $fastsearch ) | resources.Concat "assets/js/search.js" | fingerprint }}
 <script defer crossorigin="anonymous" src="{{ $search.RelPermalink }}" integrity="{{ $search.Data.Integrity }}"></script>
 {{- else }}
-{{- $search := (slice $fusejs $fastsearch ) | resources.Concat "assets/js/search.js" }}
+{{- $search := (slice $fusejs $fastsearch) | resources.Concat "assets/js/search.js" }}
 <script defer crossorigin="anonymous" src="{{ $search.RelPermalink }}"></script>
 {{- end }}
 {{- end -}}
@@ -102,7 +101,6 @@
 <!-- 用于引用微信公众号图片 -->
 <meta name="renderer" content="webkit">
 <meta name="referrer" content="never">
-
 
 {{- /* RSS */}}
 {{ range .AlternativeOutputFormats -}}

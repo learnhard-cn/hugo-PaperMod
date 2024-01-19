@@ -2,7 +2,7 @@
     --gap: 24px;
     --content-gap: 20px;
     --nav-width: 1024px;
-    --main-width: 1024px;
+    --main-width: 720px;
     --header-height: 60px;
     --footer-height: 60px;
     --radius: 8px;
@@ -18,27 +18,45 @@
 }
 
 .dark {
-    --theme: #201c1c;          /* 主题整体背景色 */
-    --entry: #251d1d;          /* 条目（如文章标题等）的背景色 */
-    --primary: #e0bbbb;        /* 主要文本颜色 */
-    --secondary: #cda3a3;      /* 次要文本颜色 */
-    --tertiary: #834444;       /* 第三级文本颜色 ，用于鲜明颜色对比*/
-    --content: #feeeee;        /* 内容块（如文章内容等）的文本颜色 */
-    --code-block-bg: #2c1e23;  /* 代码块背景色 */
-    --code-bg: #4c4242;        /* 代码背景色 */
-    --border: #4e2f39;         /* 边框颜色 */
+    --theme: #201c1c;
+    /* 主题整体背景色 */
+    --entry: #251d1d;
+    /* 条目（如文章标题等）的背景色 */
+    --primary: #e0bbbb;
+    /* 主要文本颜色 */
+    --secondary: #cda3a3;
+    /* 次要文本颜色 */
+    --tertiary: #834444;
+    /* 第三级文本颜色 ，用于鲜明颜色对比*/
+    --content: #feeeee;
+    /* 内容块（如文章内容等）的文本颜色 */
+    --code-block-bg: #2c1e23;
+    /* 代码块背景色 */
+    --code-bg: #4c4242;
+    /* 代码背景色 */
+    --border: #4e2f39;
+    /* 边框颜色 */
 }
 
 .cloud {
-    --theme: #073b4c;          /* 主题整体背景色 */
-    --entry: #005e67;          /* 条目（如文章标题等）的背景色 */
-    --primary: #ffe1e1;        /* 主要文本颜色 */
-    --secondary: #c7c7c7;      /* 次要文本颜色 */
-    --tertiary: #e31f1f;       /* 第三级文本颜色 */
-    --content: #e0e0e0;        /* 内容块（如文章内容等）的文本颜色 */
-    --code-block-bg: #002734;  /* 代码块背景色 */
-    --code-bg: #06303d;        /* 代码背景色 */
-    --border: #293e69;         /* 边框颜色 */
+    --theme: #073b4c;
+    /* 主题整体背景色 */
+    --entry: #005e67;
+    /* 条目（如文章标题等）的背景色 */
+    --primary: #ffe1e1;
+    /* 主要文本颜色 */
+    --secondary: #c7c7c7;
+    /* 次要文本颜色 */
+    --tertiary: #e31f1f;
+    /* 第三级文本颜色 */
+    --content: #e0e0e0;
+    /* 内容块（如文章内容等）的文本颜色 */
+    --code-block-bg: #002734;
+    /* 代码块背景色 */
+    --code-bg: #06303d;
+    /* 代码背景色 */
+    --border: #293e69;
+    /* 边框颜色 */
 }
 
 .list {
@@ -49,6 +67,7 @@
     background: var(--theme);
 }
 
-.body {
+body {
     transition: background-color 0.5s ease;
+    padding: 0 10px;
 }

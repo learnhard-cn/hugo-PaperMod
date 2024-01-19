@@ -58,7 +58,15 @@
             }
         });
     });
-
+    {{ if site.Params.ShowOneWord }}
+    fetch('https://v1.hitokoto.cn?c=a&c=b&c=d&c=i&c=j&c=k&max_length=48')
+        .then(response => response.json())
+        .then(data => {
+            const hitokoto = document.querySelector('#hitokoto_text')
+            hitokoto.innerText = data.hitokoto + "《" + data.from + "》"
+        })
+        .catch(console.error)
+    {{ end }}
 </script>
 
 {{- if (not site.Params.disableScrollToTop) }}

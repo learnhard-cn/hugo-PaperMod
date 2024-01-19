@@ -5,7 +5,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 */
 :root {
     --sidebar-width: 16rem;
-    --sidebar-dwidth: -14rem;
+    --sidebar-dwidth: -14.2rem;
     --toc-width: 12.5rem;
     --toc-height: 100% !important;
 }
@@ -15,7 +15,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     color: var(--content);
     padding: 0px;
     border: 2px solid var(--border);
-    border-radius: 5px;
+    border-radius: var(--radius);
     margin-bottom: 10px;
     bottom: 64px !important;
 }
@@ -23,7 +23,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 .tip-title {
     background-color: #A3BE8C;
     color: var(--theme) !important;
-    ;
+    border-radius: var(--radius);
 }
 
 /* Style for the button */
@@ -39,7 +39,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     display: fixed;
     left: 50%;
     bottom: 5%;
-    width: auto;
+    width: 9.0rem;
     height: 3.0rem;
     transform: translate(-50%, -50%);
     color: var(--content) !important;
@@ -58,7 +58,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     font-family: var(--article-font-family);
     position: -webkit-sticky;
     position: sticky;
-    height: 2.5rem;
+    height: 2.2rem;
     width: var(--sidebar-width);
     position: fixed;
     z-index: 1;
@@ -177,14 +177,14 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 
 .license-wrapper {
     background-color: var(--entry);
-    padding: 15px;
+    padding: .5rem;
     border-radius: var(--radius);
 }
 
 .license-wrapper p {
     padding: 0;
-    height: 32px;
     margin: 0;
+    font-size: .7rem;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -340,3 +340,24 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 .dropdown-menu:hover .dropdown-btn {
     background-color: var(--entry);
 }
+
+.github_status {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background-color: var(--entry);
+    border-radius: var(--radius);
+}
+.github_status a {
+    padding: 0 .2rem;
+    box-shadow: 0 0 !important;
+}
+
+.hitokoto {
+    display: flex;
+    justify-content: center;
+    height: .9rem;
+    font-style: italic;
+    padding: 0rem 2rem;
+}
+

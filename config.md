@@ -57,10 +57,31 @@ hugo gen chromastyles --style=nord > ./themes/PaperMod/assets/css/includes/chrom
 - [MathJax库官网](https://www.mathjax.org/)
 
 
-## 字体设置
+## 字体与图标SVG资源的设置
 
 - 选择字体库: https://fonts.google.com/
 - 图标字体库： https://fontawesome.com/v6/search?q=light&o=r&m=free
+- 免费的svg图标资源: https://tablericons.com/
+- Bootstrap图标: https://icons.getbootstrap.com/
+
+
+## 动态背景
+
+- [JS动态粒子背景效果](https://vincentgarreau.com/particles.js)
+- [一些动态背景示例](https://freefrontend.com/javascript-background-effects/)
+- [流动的背景示例](https://codepen.io/supah/pen/ExabJxB)
+
+将下面的JS导入到`head.html`文件中:
+
+```
+<!-- 动态背景 -->
+{{- $bg_js := resources.Get "js/bg.js" }}
+<script src="{{ $bg_js.RelPermalink }}" defer></script>
+
+```
+
+如有必要，适当修改`body`的CSS样式。
+
 
 ## ChatGPT实现代码
 

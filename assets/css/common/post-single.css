@@ -135,10 +135,10 @@
 
 .post-content table th,
 .post-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
-    min-width: 80px;
-    padding: 8px 5px;
+    min-width: 1rem;
+    /* padding: 8px 5px;
     line-height: 1.5;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border); */
 }
 
 .post-content table th {
@@ -293,6 +293,7 @@
 
 .post-footer {
     margin-top: 56px;
+    border-radius: var(--radius);
 }
 
 .post-footer>* {

@@ -6,12 +6,13 @@
 <html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
 
 <head>
+    {{ partial "csp.html" . }}
     {{- partial "head.html" . }}
 </head>
 
 <body class="
 {{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
-{{- print "list" -}}
+{{- print "dark" -}}
 {{- end -}}
 {{- if eq site.Params.defaultTheme `dark` -}}
 {{- print " dark" }}

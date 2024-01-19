@@ -28,43 +28,39 @@
         }
     }
     function handleShortcut(event) {
-        var scroll_step = 10;
-        switch (event.key) {
-            case 's':
-                scrollDirection = -1; // scroll up
-                window.scrollBy(0, scrollDirection * scroll_step * scroll_step);
-                break;
-            case 'd':
-                scrollDirection = 1; // Scroll down
-                window.scrollBy(0, scrollDirection * scroll_step * scroll_step);
-                break;
-            /* 功能按钮 */
-            case 'c':
-                var sidebar_toc = document.getElementById("sidebar-toc");
-                sidebar_toc.classList.toggle('show');
-                break;
-            case 'f':
-                toggleFullscreen();
-                break;
-            case 'g':
-                scrollToTop();
-                break;
-            case 'h':
-                location.href = "/";
-                break;
-            case 'r':
-                location.reload();
-                break;
-            case 't':
-                toggleTheme();
-                break;
-            case 'x':
-                var sidebar_pages = document.getElementById("sidebar-pages");
-                sidebar_pages.classList.toggle('show');
-                break;
-            default:
-                // Handle other keys if needed
-                break;
+        // 按了Alt键同时按如下键
+        if (event.altKey) {
+            switch (event.key) {
+                case 'a':
+                    location.href = "/search/";
+                    break;
+                case 'c':
+                    var sidebar_toc = document.getElementById("sidebar-toc");
+                    sidebar_toc.classList.toggle('show');
+                    break;
+                case 'g':
+                    scrollToTop();
+                    break;
+                case 'q':
+                    location.href = "/";
+                    break;
+                case 'r':
+                    location.reload();
+                    break;
+                case 'w':
+                    toggleFullscreen();
+                    break;
+                case 'x':
+                    var sidebar_pages = document.getElementById("sidebar-pages");
+                    sidebar_pages.classList.toggle('show');
+                    break;
+                case 'z':
+                    toggleTheme();
+                    break;
+                default:
+                    // Handle other keys if needed
+                    break;
+            }
         }
     }
 

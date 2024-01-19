@@ -1,0 +1,5 @@
+
+{{ printf 
+    `<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src %s;" />` 
+    (delimit .Site.Params.csp.scriptsrc " ") | safeHTML }}
+
