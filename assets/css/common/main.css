@@ -64,3 +64,8 @@ div.highlight:hover .copy-code,
 pre:hover .copy-code {
     display: block;
 }
+
+#hitokoto_text {
+  white-space: nowrap;
+  overflow: visible;
+}

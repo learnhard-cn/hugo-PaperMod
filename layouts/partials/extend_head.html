@@ -2,7 +2,7 @@
 {{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 
-{{- $fontawesome_alljs := resources.Get "/js/fontawesome.js" }}
+{{- $fontawesome_alljs := resources.Get "/js/fontawesome.js" | fingerprint }}
 
 <script defer crossorigin="anonymous" src="{{ $fontawesome_alljs.RelPermalink }}" integrity="{{ $fontawesome_alljs.Data.Integrity }}"></script>
 

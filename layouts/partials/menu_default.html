@@ -92,29 +92,14 @@
             {{ if .Children }}
             <div class="dropdown-menu">
                 {{ end }}
-                <a {{ if .Children }} class="dropdown-btn" {{ else }} href="{{ .URL | absLangURL }}" {{end}}
+                <a href="{{ .URL | absLangURL }}"
                     title="{{ .Title | default .Name }} {{- cond $is_search ( ` (Alt + /)` | safeHTMLAttr) (`` | safeHTMLAttr ) }}"
                     {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
                     <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
-                        {{- .Pre }}
+                        {{- .Pre }}&nbsp;&nbsp;
                         {{- .Name -}}
                         {{ .Post -}}
                     </span>
-                    {{- if (findRE "://" .URL) }}&nbsp;
-                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                        <path d="M15 3h6v6"></path>
-                        <path d="M10 14L21 3"></path>
-                    </svg>
-                    {{ else if .Children }}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="2"
-                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M8 9l4 -4l4 4" />
-                        <path d="M16 15l-4 4l-4 -4" />
-                    </svg>
-                    {{- end }}
                 </a>
                 <!-- 支持二级悬浮菜单列表 -->
                 {{ with .Children }}
@@ -122,7 +107,7 @@
                     {{ range . }}
                     <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search ( `(Alt + /)` | safeHTMLAttr) (`` | safeHTMLAttr ) }}">
                         <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
-                            {{- .Pre }} {{- .Name -}} {{ .Post -}}
+                            {{- .Pre }}&nbsp;&nbsp; {{- .Name -}} {{ .Post -}}
                         </span>
                     </a>
                     {{ end }} {{/*End of range .*/}}

@@ -23,19 +23,39 @@
     {{- with site.Params.description }}{{ . }}{{- end }}{{- end }}{{- end -}}">
 <meta name="author" content="{{ (partial "author.html" . ) }}">
 <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}">
-{{- if site.Params.analytics.google.SiteVerificationTag }}
-<meta name="google-site-verification" content="{{ site.Params.analytics.google.SiteVerificationTag }}">
-{{- end }}
-{{- if site.Params.analytics.yandex.SiteVerificationTag }}
-<meta name="yandex-verification" content="{{ site.Params.analytics.yandex.SiteVerificationTag }}">
-{{- end }}
-{{- if site.Params.analytics.bing.SiteVerificationTag }}
-<meta name="msvalidate.01" content="{{ site.Params.analytics.bing.SiteVerificationTag }}">
-{{- end }}
-{{- if site.Params.analytics.naver.SiteVerificationTag }}
-<meta name="naver-site-verification" content="{{ site.Params.analytics.naver.SiteVerificationTag }}">
-{{- end }}
 
+{{ if site.Params.analytics.google.siteVerificationTag }}
+<meta name="google-site-verification" content="{{ site.Params.analytics.google.siteVerificationTag }}">
+<!-- Google tag (gtag.js) -->
+<script async
+    src="https://www.googletagmanager.com/gtag/js?id={{ site.Params.analytics.google.siteVerificationTag }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', "{{ site.Params.analytics.google.siteVerificationTag }}");
+</script>
+{{ end }}
+
+{{ if site.Params.analytics.google.adsense }}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.Params.analytics.google.adsense }}" crossorigin="anonymous"></script>
+{{ end }}
+
+{{ if site.Params.analytics.google.pubId }}
+<script async src="https://fundingchoicesmessages.google.com/i/{{ site.Params.analytics.google.pubId }}?ers=1" nonce="{{ site.Params.analytics.google.nonce }}"></script>
+<script nonce="{{ site.Params.analytics.google.nonce }}">(function () { function signalGooglefcPresent() { if (!window.frames['googlefcPresent']) { if (document.body) { const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe); } else { setTimeout(signalGooglefcPresent, 0); } } } signalGooglefcPresent(); })();</script>
+{{ end }}
+
+{{- if site.Params.analytics.yandex.siteVerificationTag }}
+<meta name="yandex-verification" content="{{ site.Params.analytics.yandex.siteVerificationTag }}">
+{{- end }}
+{{- if site.Params.analytics.bing.siteVerificationTag }}
+<meta name="msvalidate.01" content="{{ site.Params.analytics.bing.siteVerificationTag }}">
+{{- end }}
+{{- if site.Params.analytics.naver.siteVerificationTag }}
+<meta name="naver-site-verification" content="{{ site.Params.analytics.naver.siteVerificationTag }}">
+{{- end }}
 {{- /* Styles */}}
 
 {{- /* includes */}}
@@ -76,27 +96,30 @@
 {{- end }}
 {{- /* Search */}}
 {{- if (eq .Layout `search`) -}}
-<link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
-{{- $fastsearch := resources.Get "js/fastsearch.js" | js.Build (dict "params" (dict "fuseOpts" site.Params.fuseOpts)) | resources.Minify }}
-{{- $fusejs := resources.Get "js/fuse.basic.min.js" }}
-{{- $license_js := resources.Get "js/license.js" }}
-{{- if not site.Params.assets.disableFingerprinting }}
-{{- $search := (slice $fusejs $license_js $fastsearch ) | resources.Concat "assets/js/search.js" | fingerprint }}
-<script defer crossorigin="anonymous" src="{{ $search.RelPermalink }}" integrity="{{ $search.Data.Integrity }}"></script>
-{{- else }}
-{{- $search := (slice $fusejs $fastsearch) | resources.Concat "assets/js/search.js" }}
-<script defer crossorigin="anonymous" src="{{ $search.RelPermalink }}"></script>
-{{- end }}
+    <link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
+    {{- $fastsearch := resources.Get "js/fastsearch.js" | js.Build (dict "params" (dict "fuseOpts" site.Params.fuseOpts)) | resources.Minify }}
+    {{- $fusejs := resources.Get "js/fuse.basic.min.js" }}
+    {{- $license_js := resources.Get "js/license.js" }}
+    {{- if not site.Params.assets.disableFingerprinting }}
+    {{- $search := (slice $fusejs $license_js $fastsearch ) | resources.Concat "assets/js/search.js" | fingerprint }}
+    <script defer crossorigin="anonymous" src="{{ $search.RelPermalink }}" integrity="{{ $search.Data.Integrity }}"></script>
+    {{- else }}
+    {{- $search := (slice $fusejs $fastsearch) | resources.Concat "assets/js/search.js" | fingerprint }}
+    <script defer crossorigin="anonymous" src="{{ $search.RelPermalink }}"></script>
+    {{- end }}
 {{- end -}}
-
-{{- /* Favicons */}}
+{{ if not .Site.Params.disableImageZoom | default true }}
+<script src="{{ "js/zoom.min.js" | relURL }}"></script>
+{{ end }}
+{{/* Icons */}}
 <link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ site.Params.assets.favicon16x16 | default "favicon-16x16.png" | absURL }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ site.Params.assets.favicon32x32 | default "favicon-32x32.png" | absURL }}">
 <link rel="apple-touch-icon" href="{{ site.Params.assets.apple_touch_icon | default "apple-touch-icon.png" | absURL }}">
-<link rel="mask-icon" href="{{ site.Params.assets.safari_pinned_tab | default "safari-pinned-tab.svg" | absURL }}">
-<meta name="theme-color" content="{{ site.Params.assets.theme_color | default "#2e2e33" }}">
-<meta name="msapplication-TileColor" content="{{ site.Params.assets.msapplication_TileColor | default "#2e2e33" }}">
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}" />
+
+<meta name="theme-color" content="{{ site.Params.assets.theme_color | default " #2e2e33" }}">
+<meta name="msapplication-TileColor" content="{{ site.Params.assets.msapplication_TileColor | default " #2e2e33" }}">
 
 <!-- 用于引用微信公众号图片 -->
 <meta name="renderer" content="webkit">
@@ -149,6 +172,7 @@
     </style>
     {{- end }}
 </noscript>
+{{- partial "vendor.html" . -}}
 
 {{- partial "extend_head.html" . -}}
 

@@ -267,13 +267,15 @@
 .toc details summary {
     cursor: zoom-in;
     margin-inline-start: 20px;
+    padding: 0 0 10px 0;
 }
 
 .toc details[open] summary {
     cursor: zoom-out;
+    padding: 0 0 10px 0;
 }
 
-.toc .details {
+.toc details {
     display: inline;
     font-weight: 500;
 }
@@ -282,9 +284,39 @@
     margin: 0 20px;
     padding: 10px 20px;
 }
-
-.toc li ul {
+.toc ul li {
     margin-inline-start: var(--gap);
+    list-style-type: none !important;
+    position: relative;
+    left: 0;
+    color: #fce4ec;
+    margin: 4px 0;
+    border-left: 2px solid #f50057;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.toc ul li::before {
+    content: "" !important;
+}
+
+.toc ul li:hover {
+    left: 10px;
+}
+
+.toc ul li a {
+    position: relative;
+    padding: 8px;
+    padding-left: 12px;
+    display: inline-block;
+    z-index: 1;
+    transition: 0.5s;
+}
+.toc ul li:hover a {
+    color: #111;
+}
+.toc ul li:hover:before {
+    transform: scaleX(1);
 }
 
 .toc summary:focus {

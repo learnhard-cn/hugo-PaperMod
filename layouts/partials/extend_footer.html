@@ -1,3 +1,18 @@
 {{- /* Footer custom content area start */ -}}
 {{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
+
+{{ with resources.Get "js/main.js" | fingerprint "sha256" }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+{{ end }}
+
+<script>
+{{ if not .Site.Params.disableImageZoom | default true }}
+mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+    margin: 24,
+    background: 'rgba(0,0,0,0.5)',
+    scrollOffset: 0,
+})
+{{ end }}
+</script>
+
 {{- /* Footer custom content area end */ -}}

@@ -1,71 +1,9 @@
-{{- /* theme-toggle is enabled */}}
-{{- if (not site.Params.disableThemeToggle) }}
-<script>
-    function changeGiscusTheme() {
-        const theme = document.body.classList.contains('dark') ? 'noborder_dark' : (document.body.classList.contains('light') ? 'light_tritanopia': 'cobalt');
-        function sendMessage(message) {
-            const iframe = document.querySelector('iframe.giscus-frame');
-            if (!iframe) return;
-            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-            setConfig: {
-                theme: theme,
-            },
-        });
-    };
-    function switchTheme() {
-        const themes = ['light', 'dark', 'cloud'];
-        var oldTheme = localStorage.getItem("pref-theme");
-        var newTheme = 'dark';
-        for (var i = 0; i < themes.length; i++) {
-            if (oldTheme == themes[i]) {
-                newTheme = themes[(i + 1) % themes.length];
-                break;
-            }
-        }
-        document.body.setAttribute("class", newTheme);
-        localStorage.setItem("pref-theme", newTheme);
-        changeGiscusTheme();
-    }
-    function setTheme(theme) {
-        const themes = ['light', 'dark', 'cloud'];
-        var newTheme = 'dark';
-        for (var i = 0; i < themes.length; i++) {
-            if (theme == themes[i]) {
-               newTheme = theme;
-                break;
-            }
-        }
-        document.body.setAttribute("class", newTheme);
-        localStorage.setItem("pref-theme", newTheme);
-        changeGiscusTheme();
-    }
-    function toggleTheme() {
-        document.getElementById("theme-toggle").click();
-    }
-    var currentTheme = localStorage.getItem("pref-theme");
-    if (! currentTheme) {
-        currentTheme = {{ site.Params.defaultTheme }}
-    }
-    setTheme(currentTheme); // 初始化默认的主题
-</script>
-
-{{- /* theme-toggle is disabled and theme is auto */}}
-{{- else if (and (ne site.Params.defaultTheme "light") (ne site.Params.defaultTheme "dark") (ne site.Params.defaultTheme "cloud"))}}
-<script>
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.setAttribute('class', 'dark');
-    }
-
-</script>
-{{- end }}
 
 <header class="header">
     {{ partial "menu_default.html" . }}
     {{ if site.Params.ShowOneWord }}
         <div class="hitokoto">
-            <a id="hitokoto_text">:D ...</a>
+            <a href="#" id="hitokoto_text">:D ...</a>
         </div>
     {{ end }}
 </header>

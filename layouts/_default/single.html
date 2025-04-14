@@ -38,10 +38,10 @@
     {{- else }}{{ .Content }}{{ end }}
     <div class="dotted-line"></div>
     <div class="license-wrapper">
-      <p>原文作者: <a href="{{ .Site.BaseURL }}">{{ .Site.Param "author" }}</a> </p>
-      <p>原始链接: <a href="{{ .Permalink }}">{{ .Permalink }}</a> </p>
-      <p>发表时间: {{ .PublishDate }} </p>
-      <p>版权声明：本文采用<a href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+      <p>{{- i18n "article_author" }}: <a href="{{ .Site.BaseURL }}">{{ .Site.Param "author" }}</a> </p>
+      <p>{{- i18n "article_link" }}: <a href="{{ .Permalink }}">{{ .Permalink }}</a> </p>
+      <p>{{- i18n "article_publish" }}: {{ .PublishDate }} </p>
+      <p>{{- i18n "article_license" | markdownify }}</p>
     </div>
     <div class="dotted-line"></div>
   </div>
@@ -49,43 +49,6 @@
   {{- partial "sidebar_articles.html" . }}
   {{- partial "sidebar_toc.html" . }}
   {{- end }}
-
-  {{ if .Page.Store.Get "hasMermaid" }}
-    <script type="module">
-      function getMermaidTheme() {
-        var oldTheme = localStorage.getItem("pref-theme");
-        var newTheme = oldTheme
-        if (oldTheme != "dark") {
-          newTheme = "forest";
-        }
-        return newTheme;
-      };
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-      const mermaidAPI = mermaid.mermaidAPI;
-      mermaidAPI.initialize({
-          securityLevel: 'loose',
-          theme: getMermaidTheme(),  // theme: default、forest、dark、neutral , base
-        });
-        // 更换主题的函数
-        function changeMermaidTheme() {
-          var newTheme = getMermaidTheme();
-          mermaidAPI.initialize({
-            theme: newTheme // 设置新主题
-          });
-          location.reload(3); // 刷新页面重新渲染
-        };
-        document.getElementById("theme-toggle").addEventListener("click", () => {
-          changeMermaidTheme();
-        });
-        
-    </script>
-  {{ end }}
-
-  {{ if .Page.Store.Get "hasMathJax" }}
-    <script type="text/javascript"
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-  {{ end }}
 
   {{- end }}
 

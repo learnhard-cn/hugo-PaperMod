@@ -1,10 +1,55 @@
-<script src="https://giscus.app/client.js" data-repo="{{ site.Params.Services.Giscus.RepoName }}"
-        data-repo-id="{{ site.Params.Services.Giscus.RepoId }}"
-        data-category="{{ site.Params.Services.Giscus.Category }}"
-        data-category-id="{{ site.Params.Services.Giscus.CategoryId }}"
-        data-mapping="{{ site.Params.Services.Giscus.Mapping }}" data-strict="1" data-reactions-enabled="1"
-        data-emit-metadata="0" data-input-position="{{ site.Params.Services.Giscus.InputPosition }}"
-        data-theme="{{ site.Params.Services.Giscus.Theme }}" data-lang="zh-CN"
-        data-loading="{{ site.Params.Services.Giscus.Loading }}" crossorigin="anonymous" async>
 
+<div id="giscus_thread"></div>
+
+<script>
+        const giscusConfig = {
+                repo: {{ .Site.Params.Services.Giscus.RepoName }}, // 替换为您的 GitHub 用户名和仓库名
+                repoId: {{ .Site.Params.Services.Giscus.RepoId }},          // 替换为您的仓库ID（可在 Giscus 配置页面获取）
+                category: {{ site.Params.Services.Giscus.Category }},              // 替换为您的评论分类（可选）
+                categoryId: {{ site.Params.Services.Giscus.CategoryId }},              // 替换为您的评论分类（可选）
+                mapping: {{ site.Params.Services.Giscus.Mapping }},
+                theme: document.body.classList.contains('dark') ? 'noborder_dark' : (document.body.classList.contains('light') ? 'light_tritanopia' : 'cobalt'),
+        };
+
+        function initGiscusTheme() { // 保证加载成功后设置主题
+                const theme = document.body.classList.contains('dark') ? 'noborder_dark' : (document.body.classList.contains('light') ? 'light_tritanopia' : 'cobalt');
+                function sendMessage(message) {
+                        const iframe = document.querySelector('iframe.giscus-frame');
+                        iframe.addEventListener('load', function () {
+                                // 在iframe加载成功后执行的操作
+                                console.log('IFrame giscus loaded successfully!');
+                                // 可以在这里设置iframe的样式或执行其他操作
+                                iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+                        });
+                        iframe.addEventListener('error', function () {
+                                // 在iframe加载失败时执行的操作
+                                console.log('IFrame giscus failed to load.');
+                        });
+                }
+                sendMessage({
+                        setConfig: {
+                        theme: theme,
+                        },
+                });
+        };
+
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.async = true;
+        script.defer = true;
+        script.setAttribute('data-repo', giscusConfig.repo);
+        script.setAttribute('data-repo-id', giscusConfig.repoId);
+        script.setAttribute('data-category', giscusConfig.category);
+        script.setAttribute('data-category-id', giscusConfig.categoryId);
+        script.setAttribute('data-mapping', giscusConfig.mapping);
+        script.setAttribute('data-theme', giscusConfig.theme);
+        script.setAttribute('data-input-position', 'top');
+        script.setAttribute('crossorigin', 'anonymous');
+        script.onload = () => {
+                initGiscusTheme();
+        }
+        document.getElementById('giscus_thread').appendChild(script);
 </script>
+
+<noscript>Please enable JavaScript to view the <a href="https://giscus.app">comments powered by Giscus.app.</a></noscript>
+

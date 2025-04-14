@@ -38,3 +38,14 @@
 - id: article_list
   translation: "文章列表(x)"
 
+- id: article_author
+  translation: "原文作者"
+
+- id: article_link
+  translation: "原始链接"
+
+- id: article_publish
+  translation: "发表时间"
+
+- id: article_license
+  translation: "版权声明：本文采用[知识共享署名-非商业性使用 4.0 国际许可协议](http://creativecommons.org/licenses/by-nc/4.0/)进行许可"

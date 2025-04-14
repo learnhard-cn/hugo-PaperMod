@@ -14,17 +14,25 @@
             <div class="toc-header">{{- i18n "article_list" | default "List of Articles" }} </div>
         </div>
         <div class="pages-titles">
-            {{ $nouse := slice "tags" "categories" }}
-            {{ $menu_main := .Site.Menus.main }}
-            {{ $tocopen := .Site.Params.tocopen }}
+            {{ $main_sections := .Site.MainSections }}
+            {{ $menu_list := slice }}
+            {{ range .Site.Menus.main }} <!-- 目的: 获取菜单子节点Menu -->
+                {{ if .HasChildren }}
+                    {{ range .Children }}
+                        {{ $menu_list = $menu_list | append . }}
+                    {{ end }}
+                {{ else }}
+                    {{ $menu_list = $menu_list | append . }}
+                {{ end }}
+            {{ end }}
+            {{ $menuopen := .Site.Params.menuopen }}
             {{ range .Site.Pages.GroupBy "Section" }}
-                {{ if not (in $nouse .Key ) }}
+                {{ if  (in $main_sections .Key ) }}
                     {{ $id_key := .Key}}
-                    {{ $has_key := "false" }}
-                    {{ range $menu_main }}
+                    {{ range $menu_list }}  <!-- 目的：获取 菜单的Name字段 -->
                         {{ if (eq .Identifier $id_key ) }}
                         <p>
-                        <details {{ if (eq $tocopen true) }} open=true {{ end }} >
+                        <details {{ if (eq $menuopen true) }} open=true {{ end }} >
                             <summary markdown="span">{{ .Name }}</summary>
                         {{ end }}
                     {{ end }}
@@ -37,7 +45,7 @@
                     </ul>
                     </details>
                     </p>
-                {{ end}}
+                {{ end}} 
             {{ end }}
 
         </div>
